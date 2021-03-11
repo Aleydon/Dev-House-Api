@@ -1,15 +1,12 @@
 /* Created by Roberto Aleydon */
 
-const express = require("express");
+import express, { json } from 'express';
+
 const app = express();
-const PORT = 3333;
+const PORT = process.env.PORT || 3333;
 
-app.use(express.json());
+app.use(json());
 
-app.get("/", (req, res) => {
-  return res.send("Server Work!!!");
-});
+app.get('/', (req, res) => res.send('Server Work!!!'));
 
-app.listen(PORT, (req, res) => {
-  return console.log(`Server running on port ${PORT}`);
-});
+app.listen(PORT, (req, res) => console.log(`Server running on port ${PORT}`));
