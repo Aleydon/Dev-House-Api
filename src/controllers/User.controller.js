@@ -24,4 +24,14 @@ export default {
     }
     return console.log('Okay');
   },
+
+  async destroy(req, res) {
+    try {
+      const { id } = req.params;
+      await UserSchema.findByIdAndDelete({ _id: id });
+      return res.send('User deleted');
+    } catch (error) {
+      return console.log(`User delete error ${error}`);
+    }
+  },
 };
