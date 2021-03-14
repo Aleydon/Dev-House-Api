@@ -16,7 +16,7 @@ export default {
       if (!user) {
         const newUser = await UserSchema.create({
           name,
-          email,
+          email
         });
         return res.send(newUser);
       }
@@ -47,14 +47,14 @@ export default {
         { _id: id },
         {
           name,
-          email,
+          email
         }
       );
       return res.send({
-        user: 'updated',
+        user: 'updated'
       });
     } catch (error) {
       return console.log(`User delete error: ${error}`);
     }
-  },
+  }
 };
