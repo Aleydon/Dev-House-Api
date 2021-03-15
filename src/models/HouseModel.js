@@ -7,14 +7,14 @@ const HouseSchema = Schema(
     description: String,
     price: Number,
     location: String,
-    status: String,
-    type: {
-      ObjectId,
-      ref: 'User',
-    },
+    status: Boolean,
+    user: {
+      type: ObjectId,
+      ref: 'User'
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 
