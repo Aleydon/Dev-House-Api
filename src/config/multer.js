@@ -2,10 +2,14 @@ import multer from 'multer';
 import path from 'path';
 
 export default multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, '/tmp/my-uploads');
-  },
-  filename(req, file, cb) {
-    cb(null, `${file.fieldname}-${Date.now()}`);
-  }
+  storage: multer.diskStorage({
+    destination: path.resolve(__dirname, '..', '..', 'uploads'),
+
+    filename(req, file, cb) {
+      const extension = path.extname(file.originalname);
+      const name = path.basename(file.originalname, extension);
+
+      cb(null, `${name}-${Date.now()}${extension}`);
+    }
+  })
 });
