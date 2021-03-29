@@ -1,7 +1,7 @@
 import multer from 'multer';
 import path from 'path';
 
-export default multer.diskStorage({
+module.exports = {
   storage: multer.diskStorage({
     destination: path.resolve(__dirname, '..', '..', 'uploads'),
 
@@ -12,4 +12,4 @@ export default multer.diskStorage({
       cb(null, `${name}-${Date.now()}${extension}`);
     }
   })
-});
+};

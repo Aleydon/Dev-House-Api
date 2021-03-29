@@ -29,6 +29,8 @@
       "imports": "never",
       "exports": "never",
       "functions": "never"
-  }]
+  }],
+  "consistent-return": "off",
+  "camelcase": "off"
   }
 }

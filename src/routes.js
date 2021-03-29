@@ -6,7 +6,7 @@ import UserController from './controllers/UserController';
 import HouseController from './controllers/HouseController';
 
 const route = Router();
-const upload = multer(configUpload);
+const uploadFile = multer(configUpload);
 
 // User / Session routes
 route.get('/', UserController.index);
@@ -15,6 +15,13 @@ route.delete('/:id', UserController.destroy);
 route.put('/:id', UserController.update);
 
 // House routes
-route.post('/houses', upload.single('thumbnail'), HouseController.store);
+route.post('/houses', uploadFile.single('thumbnail'), HouseController.store);
+route.get('/houses', HouseController.index);
+route.delete('/houses/:id', HouseController.destroy);
+
+route.get('/files', (req, res) => {
+  const image = req.file;
+  return res.send(image);
+});
 
 export default route;

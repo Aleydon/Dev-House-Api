@@ -1,5 +1,4 @@
-/* eslint-disable comma-dangle */
-import { model, Schema, ObjectId } from 'mongoose';
+import { model, Schema } from 'mongoose';
 
 const HouseSchema = Schema(
   {
@@ -9,7 +8,7 @@ const HouseSchema = Schema(
     location: String,
     status: Boolean,
     user: {
-      type: ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'User'
     }
   },
