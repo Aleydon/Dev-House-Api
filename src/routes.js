@@ -17,7 +17,7 @@ route.put('/:id', UserController.update);
 // House routes
 route.post('/houses', uploadFile.single('thumbnail'), HouseController.store);
 route.get('/houses', HouseController.index);
-route.delete('/houses/:id', HouseController.destroy);
+route.delete('/houses', HouseController.destroy);
 route.put(
   '/houses/:house_id',
   uploadFile.single('thumbnail'),
