@@ -20,7 +20,8 @@ route.get('/houses', HouseController.index);
 route.delete('/houses/:id', HouseController.destroy);
 route.put(
   '/houses/:house_id',
-  uploadFile.single('thumbail', HouseController.update)
+  uploadFile.single('thumbnail'),
+  HouseController.update
 );
 
 route.get('/files', (req, res) => {
