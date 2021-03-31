@@ -18,6 +18,10 @@ route.put('/:id', UserController.update);
 route.post('/houses', uploadFile.single('thumbnail'), HouseController.store);
 route.get('/houses', HouseController.index);
 route.delete('/houses/:id', HouseController.destroy);
+route.put(
+  '/houses/:house_id',
+  uploadFile.single('thumbail', HouseController.update)
+);
 
 route.get('/files', (req, res) => {
   const image = req.file;
