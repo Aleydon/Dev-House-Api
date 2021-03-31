@@ -23,8 +23,10 @@ export default {
   },
 
   async index(req, res) {
+    // Get houses with filter true or false
     try {
-      const houseData = await HouseSchema.find();
+      const { status } = req.headers;
+      const houseData = await HouseSchema.find({ status });
       res.send(houseData);
     } catch (error) {
       return console.log(`House Get error: ${error}`);
@@ -48,6 +50,37 @@ export default {
       return res.send('House delete sucessful');
     } catch (error) {
       return console.log(`House Delete error: ${error}`);
+    }
+  },
+
+  async update(req, res) {
+    try {
+      const { house_id } = req.params;
+      const { originalname } = req.file;
+      const { description, price, location, status } = req.body;
+      const { user_id } = req.headers;
+
+      const user = await UserSchema.findById(user_id);
+      const houses = await HouseSchema.findById(house_id);
+
+      if (String(user.id) !== String(houses.user)) {
+        return res.status(400).json({ error: 'Unauthorized acess!!!' });
+      }
+
+      const houseUpdate = await HouseSchema.updateOne(
+        { _id: house_id },
+        {
+          user: user_id,
+          description,
+          price,
+          location,
+          status,
+          thumbnail: originalname
+        }
+      );
+      return res.send(`House Updated ${houseUpdate}`);
+    } catch (error) {
+      return console.log(`Update error ${error}`);
     }
   }
 };
