@@ -4,6 +4,7 @@ import multer from 'multer';
 import configUpload from './config/multer';
 import UserController from './controllers/UserController';
 import HouseController from './controllers/HouseController';
+import DashboardController from './controllers/DashboardController';
 
 const route = Router();
 const uploadFile = multer(configUpload);
@@ -23,6 +24,9 @@ route.put(
   uploadFile.single('thumbnail'),
   HouseController.update
 );
+
+// Dashboard route
+route.get('/dashboard', DashboardController.show);
 
 route.get('/files', (req, res) => {
   const image = req.file;
