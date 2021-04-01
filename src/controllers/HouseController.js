@@ -42,7 +42,7 @@ export default {
       const houses = await HouseSchema.findById(house_id);
 
       if (String(user.id) !== String(houses.user)) {
-        return res.status(400).json({ error: 'Nao autorizado!!!' });
+        return res.status(400).json({ error: 'Unauthorized acess!!!' });
       }
 
       await HouseSchema.findByIdAndDelete({ _id: house_id });

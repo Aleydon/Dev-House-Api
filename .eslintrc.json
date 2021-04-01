@@ -31,19 +31,18 @@
       "exports": "never",
       "functions": "never"
   }],
-  "consistent-return": "off",
-  "camelcase": "off"
-  },
   "import-helpers/order-imports": [
     "warn",
     { 
         "newlinesBetween": "always",
         "groups": [
-            "module",
-            "/^express",
-            ["parent", "sibling", "index"]
+          "module",
+          ["parent", "sibling", "index"]
         ],
         "alphabetize": { "order": "asc", "ignoreCase": true }
     }
-  ]
+  ],
+  "consistent-return": "off",
+  "camelcase": "off"
+  }
 }

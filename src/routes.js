@@ -2,9 +2,9 @@ import { Router } from 'express';
 import multer from 'multer';
 
 import configUpload from './config/multer';
-import UserController from './controllers/UserController';
-import HouseController from './controllers/HouseController';
 import DashboardController from './controllers/DashboardController';
+import HouseController from './controllers/HouseController';
+import UserController from './controllers/UserController';
 
 const route = Router();
 const uploadFile = multer(configUpload);
