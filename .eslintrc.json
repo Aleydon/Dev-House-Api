@@ -41,7 +41,7 @@
         "groups": [
             "module",
             "/^express",
-            ["parent", "sibling", "index"],
+            ["parent", "sibling", "index"]
         ],
         "alphabetize": { "order": "asc", "ignoreCase": true }
     }
