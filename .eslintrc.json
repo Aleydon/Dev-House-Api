@@ -8,7 +8,8 @@
     "prettier"
   ],
   "plugins": [
-    "prettier"
+    "prettier",
+    "eslint-plugin-import-helpers"
   ],
   "parserOptions": {
     "ecmaVersion": 2017,
@@ -32,5 +33,17 @@
   }],
   "consistent-return": "off",
   "camelcase": "off"
-  }
+  },
+  "import-helpers/order-imports": [
+    "warn",
+    { 
+        "newlinesBetween": "always",
+        "groups": [
+            "module",
+            "/^express",
+            ["parent", "sibling", "index"],
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+    }
+  ]
 }
