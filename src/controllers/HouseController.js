@@ -1,12 +1,28 @@
+import * as yup from 'yup';
+
 import HouseSchema from '../models/HouseModel';
 import UserSchema from '../models/UserModel';
 
 export default {
+  // Set validation
   async store(req, res) {
+    const schema = yup.object().shape({
+      thumbnail: yup.string().required(),
+      description: yup.string().required(),
+      price: yup.number().required(),
+      location: yup.string().required(),
+      status: yup.boolean().required()
+    });
+
     try {
       const { originalname } = req.file;
       const { description, price, location, status } = req.body;
       const { user_id } = req.headers;
+
+      // Check if all fields are valid
+      if (!(await schema.isValid(req.body))) {
+        return res.send(400).json({ error: 'Validation failed' });
+      }
 
       const house = await HouseSchema.create({
         user: user_id,
@@ -22,8 +38,8 @@ export default {
     }
   },
 
+  // Get houses with filter true or false
   async index(req, res) {
-    // Get houses with filter true or false
     try {
       const { status } = req.headers;
       const houseData = await HouseSchema.find({ status });
@@ -54,11 +70,24 @@ export default {
   },
 
   async update(req, res) {
+    const schema = yup.object().shape({
+      thumbnail: yup.string().required(),
+      description: yup.string().required(),
+      price: yup.number().required(),
+      location: yup.string().required(),
+      status: yup.boolean().required()
+    });
+
     try {
       const { house_id } = req.params;
       const { originalname } = req.file;
       const { description, price, location, status } = req.body;
       const { user_id } = req.headers;
+
+      // Check if all fields are valid
+      if (!(await schema.isValid(req.body))) {
+        return res.send(400).json({ error: 'Validation failed' });
+      }
 
       const user = await UserSchema.findById(user_id);
       const houses = await HouseSchema.findById(house_id);
