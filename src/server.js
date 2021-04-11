@@ -1,8 +1,8 @@
 /* Created by Roberto Aleydon */
 
 import 'dotenv/config';
-import express, { json } from 'express';
 import cors from 'cors';
+import express, { json } from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 

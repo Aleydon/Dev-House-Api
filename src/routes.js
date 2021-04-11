@@ -4,6 +4,7 @@ import multer from 'multer';
 import configUpload from './config/multer';
 import DashboardController from './controllers/DashboardController';
 import HouseController from './controllers/HouseController';
+import ReserveController from './controllers/ReserveController';
 import UserController from './controllers/UserController';
 
 const route = Router();
@@ -27,6 +28,9 @@ route.put(
 
 // Dashboard route
 route.get('/dashboard', DashboardController.show);
+
+// Reserve houses route
+route.post('/houses/:house_id/reserve', ReserveController.store);
 
 route.get('/files', (req, res) => {
   const image = req.file;
