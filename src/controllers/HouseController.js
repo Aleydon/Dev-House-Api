@@ -21,7 +21,7 @@ export default {
 
       // Check if all fields are valid
       if (!(await schema.isValid(req.body))) {
-        return res.send(400).json({ error: 'Validation failed' });
+        return res.status(400).json({ error: 'Validation failed' });
       }
 
       const house = await HouseSchema.create({
@@ -86,7 +86,7 @@ export default {
 
       // Check if all fields are valid
       if (!(await schema.isValid(req.body))) {
-        return res.send(400).json({ error: 'Validation failed' });
+        return res.status(400).json({ error: 'Validation failed' });
       }
 
       const user = await UserSchema.findById(user_id);

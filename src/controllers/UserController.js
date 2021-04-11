@@ -1,3 +1,5 @@
+import * as yup from 'yup';
+
 import UserSchema from '../models/UserModel';
 
 export default {
@@ -9,8 +11,19 @@ export default {
 
   // Create User
   async store(req, res) {
+    const schema = yup.object().shape({
+      name: yup.string().required(),
+      email: yup.string().email().required()
+    });
+
     try {
       const { name, email } = req.body;
+
+      // Check if all fields are valid
+      if (!(await schema.isValid(req.body))) {
+        return res.status(400).json({ error: 'Email invalid' });
+      }
+      // Check if user already
       const user = await UserSchema.findOne({ email });
 
       if (!user) {
