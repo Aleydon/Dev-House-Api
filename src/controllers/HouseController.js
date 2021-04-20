@@ -7,7 +7,6 @@ export default {
   // Set validation
   async store(req, res) {
     const schema = yup.object().shape({
-      thumbnail: yup.string().required(),
       description: yup.string().required(),
       price: yup.number().required(),
       location: yup.string().required(),
@@ -21,7 +20,8 @@ export default {
 
       // Check if all fields are valid
       if (!(await schema.isValid(req.body))) {
-        return res.status(400).json({ error: 'Validation failed' });
+        console.log(req.body);
+        return res.status(400).json({ error: 'House Validation failed' });
       }
 
       const house = await HouseSchema.create({
