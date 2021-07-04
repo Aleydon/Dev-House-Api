@@ -16,3 +16,19 @@
 NodeJs: :link: https://nodejs.org/en/
 
 ---
+
+#### :arrow_forward:   Get Started: 
+
+  1. Clone this repo
+   ```sh
+   git clone https://github.com/Aleydon/Dev-House-Api.git
+   ```
+  2. Install NPM packages
+   ```sh
+   npm install or yarn install
+   ```
+   3. Run this project
+   ```sh
+   npm start or yarn start
+   ```
+---  
